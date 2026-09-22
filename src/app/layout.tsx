@@ -10,6 +10,10 @@ const jakarta = Plus_Jakarta_Sans({
 
 export const metadata: Metadata = {
   title: "Greenwave Engineering Pvt. Ltd. | Industrial MEP & Engineering Execution",
+  icons: {
+    icon: "/images/logo.jpg",
+    apple: "/images/logo.jpg",
+  },
   description:
     "Greenwave Engineering delivers turnkey industrial MEP execution — HVAC, fire fighting, electrical, plumbing, and process systems — across India with in-house engineering, BIM, and technology-enabled project management.",
   keywords: [

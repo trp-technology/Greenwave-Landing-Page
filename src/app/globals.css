@@ -2,25 +2,214 @@
 
 :root {
   --background: #ffffff;
-  --foreground: #171717;
+  --foreground: #0f172a;
+  --muted: #64748b;
+  --surface: #f8fafb;
+  --charcoal: #0f172a;
+  --surface-dark: #1a4731;
+  --surface-card: #ffffff;
+  --brand: #1a4731;
+  --brand-dark: #133826;
+  --brand-light: #edf5f1;
+  --accent: #0d9488;
+  --accent-light: #e6f5f3;
+  --border: #e2e8f0;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-muted: var(--muted);
+  --color-surface: var(--surface);
+  --color-charcoal: var(--charcoal);
+  --color-surface-dark: var(--surface-dark);
+  --color-surface-card: var(--surface-card);
+  --color-brand: var(--brand);
+  --color-brand-dark: var(--brand-dark);
+  --color-brand-light: var(--brand-light);
+  --color-accent: var(--accent);
+  --color-accent-light: var(--accent-light);
+  --color-border: var(--border);
+  --font-sans: var(--font-jakarta);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5.75rem;
+}
+
+@media (min-width: 1024px) {
+  html {
+    scroll-padding-top: 6.25rem;
+  }
+}
+
+section[id] {
+  scroll-margin-top: 5.75rem;
+}
+
+@media (min-width: 1024px) {
+  section[id] {
+    scroll-margin-top: 6.25rem;
   }
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-jakarta), system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+::selection {
+  background: color-mix(in srgb, var(--accent) 20%, white);
+  color: var(--foreground);
+}
+
+.section-pad {
+  padding-block: 5.5rem;
+}
+
+@media (min-width: 640px) {
+  .section-pad {
+    padding-block: 6.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .section-pad {
+    padding-block: 7.5rem;
+  }
+}
+
+.grid-pattern {
+  background-image:
+    linear-gradient(to right, rgba(26, 71, 49, 0.03) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(26, 71, 49, 0.03) 1px, transparent 1px);
+  background-size: 72px 72px;
+}
+
+.dot-pattern {
+  background-image: radial-gradient(
+    circle,
+    rgba(26, 71, 49, 0.12) 1px,
+    transparent 1px
+  );
+  background-size: 24px 24px;
+}
+
+.industry-overlay {
+  background: linear-gradient(
+    to top,
+    rgba(26, 71, 49, 0.92) 0%,
+    rgba(26, 71, 49, 0.55) 45%,
+    rgba(26, 71, 49, 0.25) 100%
+  );
+}
+
+.engineering-rule {
+  height: 1px;
+  background: linear-gradient(
+    to right,
+    var(--accent),
+    color-mix(in srgb, var(--accent) 30%, transparent) 40%,
+    transparent
+  );
+}
+
+.display-hero {
+  font-size: clamp(2.5rem, 5vw + 0.75rem, 4.25rem);
+  line-height: 1.05;
+  letter-spacing: -0.035em;
+  text-wrap: balance;
+}
+
+.hero-overlay-base {
+  background: linear-gradient(
+    105deg,
+    rgba(8, 22, 17, 0.82) 0%,
+    rgba(8, 22, 17, 0.45) 38%,
+    rgba(8, 22, 17, 0.08) 62%,
+    transparent 100%
+  );
+}
+
+.hero-overlay-bottom {
+  background: linear-gradient(
+    to top,
+    rgba(8, 22, 17, 0.85) 0%,
+    rgba(8, 22, 17, 0.55) 18%,
+    transparent 45%
+  );
+}
+
+.hero-overlay-top {
+  background: linear-gradient(
+    to bottom,
+    rgba(8, 22, 17, 0.35) 0%,
+    transparent 28%
+  );
+}
+
+.hero-stat-card {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  box-shadow: 0 24px 64px -24px rgba(0, 0, 0, 0.45);
+}
+
+.display-section {
+  font-size: clamp(2rem, 3.5vw + 0.5rem, 3.25rem);
+  line-height: 1.06;
+  letter-spacing: -0.025em;
+  text-wrap: balance;
+}
+
+.stat-display {
+  font-size: clamp(2.5rem, 4vw + 0.5rem, 4.5rem);
+  line-height: 1;
+  letter-spacing: -0.03em;
+  font-variant-numeric: tabular-nums;
+}
+
+.accent-bar {
+  width: 4px;
+  flex-shrink: 0;
+  align-self: stretch;
+  background: var(--accent);
+}
+
+.logo-marquee-track {
+  animation: logo-marquee 72s linear infinite;
+  will-change: transform;
+}
+
+.logo-marquee-track-reverse {
+  animation-direction: reverse;
+}
+
+@keyframes logo-marquee {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+
+  to {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }

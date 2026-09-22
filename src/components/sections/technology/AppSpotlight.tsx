@@ -23,7 +23,7 @@ export function AppSpotlightPanel({
   const active =
     spotlights.find((s) => s.id === activeSpotlightId) ?? spotlights[0];
   const activeFeatures = features.filter((f) =>
-    active.featureTitles.includes(f.title),
+    (active.featureTitles ?? []).includes(f.title),
   );
 
   return (
